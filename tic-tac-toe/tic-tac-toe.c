@@ -9,14 +9,14 @@ int main() {
     do
     {
 
-        reset_game(&game);
+        reset_game(game);
 
-        start(&game);
+        start(game);
         
         if(game->multiplayer == 1) {
-            get_user_name(&game);
-            sort_first_player(&game);
-            tictactoe(&game);
+            get_user_name(game);
+            sort_first_player(game);
+            tictactoe(game);
         }
         else
         {
