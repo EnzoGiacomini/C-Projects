@@ -1,31 +1,27 @@
-#include "game.h"
+#include "common.h"
+#include "multiplayer.h"
+#include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <math.h>
 
-int main() {
-
-    Game *game = (Game *)calloc(1,sizeof(Game));
-    if (!game) return 1;
+int main ()
+{
+    int *decision = (int *)calloc(1, sizeof(int));
+    Data *game = (Data *)calloc(1, sizeof(Data));
+    srand(time(NULL));
 
     do
     {
+        startUi();
+        *decision = getOp();
 
-        reset_game(game);
+        switchMode(decision, game);
 
-        start(game);
-        
-        if(game->multiplayer == 1) {
-            get_user_name(game);
-            sort_first_player(game);
-            tictactoe(game);
-        }
-        else
-        {
-
-        }
-
-    } while(game->endGame == 0);
+    } while(*decision != 4);
 
     free(game);
+    free(decision);
 
     return 0;
 }
