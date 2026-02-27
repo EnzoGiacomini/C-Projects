@@ -4,24 +4,24 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include <time.h>
 
 int main ()
 {
-    int *decision = (int *)calloc(1, sizeof(int));
+    int decision;
     Data *game = (Data *)calloc(1, sizeof(Data));
     srand(time(NULL));
 
     do
     {
         startUi();
-        *decision = getOp();
+        decision = getOp();
 
-        switchMode(decision, game);
+        switchMode(&decision, game);
 
-    } while(*decision != 4);
+    } while(decision != 4);
 
     free(game);
-    free(decision);
 
     return 0;
 }

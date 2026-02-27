@@ -5,6 +5,17 @@
 #include <string.h>
 #include <math.h>
 
+void cleanTable(Data *g)
+{
+    for(int i = 0; i < 3; i++)
+    {
+        for(int j = 0; j < 3; j++)
+        {
+            g->table[i][j] = -1;
+        }
+    }
+}
+
 void lineUi()
 {
     printf("\n\n-----------------------------------\n\n");
@@ -30,6 +41,7 @@ void switchMode(int *op, Data *g)
     switch (*op)
     {
     case 1:
+        cleanTable(g);
         multi(g);
         break;
     case 2:
@@ -72,11 +84,11 @@ void showTable(int isTutorial, Data *g)
             {
                 if(j != 2)
                 {
-                    printf("  %d  |", g->table[i][j]);
+                    printf("  %c  |", intToChar(i, j, g));
                 }
                 else
                 {
-                    printf("  %d  ", g->table[i][j]);
+                    printf("  %c  ", intToChar(i, j, g));
                 }
             }
             if(i != 2)
@@ -114,6 +126,22 @@ void showTable(int isTutorial, Data *g)
             }
             
         }
+    }
+}
+
+char intToChar(int i, int j, Data *g)
+{
+    if(g->table[i][j] == -1)
+    {
+        return ' ';
+    }
+    else if(g->table[i][j] == 0)
+    {
+        return 'X';
+    }
+    else
+    {
+        return 'O';
     }
 }
 
