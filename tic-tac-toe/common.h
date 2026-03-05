@@ -19,5 +19,12 @@ void tutorial(Data *g);
 void showTable(int isTutorial, Data *g);
 char intToChar(int i, int j, Data *g);
 void cleanTable(Data *g);
+void getUserNames(Data *g, int isMultiplayer);
+void sortPlayer(Data *g);
+int canPlace(int i, int j, Data *g);
+void decoderInputPlayer(int m, Data *g);
+void checkGame(Data *g, int *r);
+void switchTurn(Data *g);
+void endGame(int result, Data *g);
 
 #endif
